@@ -1,0 +1,22 @@
+<?php
+/**
+ * @copyright Copyright (c) 1999-2016 netz98 GmbH (http://www.netz98.de)
+ *
+ * @see LICENSE
+ */
+
+namespace Deployer;
+
+use N98\Deployer\RoleManager;
+
+$local = localServer('local');
+$local->user('__ADD_YOUR_LOCAL_USERNAME__');
+$local->set('deploy_path', '__ADD_DEPLOY_PATH__');
+$local->stage('dev');
+
+$local->set('config-store-env', '__SET_YOUR_CONFIG_STORE_ENV__');
+$local->set('webserver-user', '__SET_YOUR_LOCAL_USER__');
+$local->set('webserver-group', '__SET_YOUR_LOCAL_GROUP__');
+$local->set('bin/n98_magerun2', 'n98-magerun2.phar');
+
+RoleManager::addServerToRoles('local', ['web', 'db']);
