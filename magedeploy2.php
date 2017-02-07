@@ -56,7 +56,7 @@ return [
             'base-url' => 'http://magedeploy2_dev',
             'base-url-secure' => 'https://magedeploy2_dev',
             'currency' => 'EUR',
-            'db-host' => '127.0.0.1',
+            'db-host' => '127.0.0.1', // @todo set your db settings here
             'db-name' => 'magedeploy2_dev',
             'db-password' => '',
             'db-user' => 'root',

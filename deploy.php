@@ -8,7 +8,7 @@
 
 namespace Deployer;
 
-use N98\Deployer\Recipe\N98Magento2Recipe;
+use N98\Deployer\Recipe\Magento2Recipe;
 use N98\Deployer\Task\BuildTasks;
 use N98\Deployer\Task\CleanupTasks;
 use N98\Deployer\Task\DeployTasks;
@@ -17,7 +17,7 @@ use N98\Deployer\Task\SystemTasks;
 
 require 'recipe/common.php';
 
-N98Magento2Recipe::configuration();
+Magento2Recipe::configuration();
 
 /**
  * CONFIGURATION
@@ -38,7 +38,7 @@ if (is_file($configLocal)) {
 require_once __DIR__ . '/config/staging.php';
 require_once __DIR__ . '/config/production.php';
 
-N98Magento2Recipe::tasks();
+Magento2Recipe::tasks();
 
 /**
  * DEPLOYMENT PIPELINE
