@@ -6,7 +6,7 @@
  */
 namespace Deployer;
 
-use N98\Deployer\DeployFile\N98Magento2DeployFile;
+use N98\Deployer\Recipe\N98Magento2Recipe;
 use N98\Deployer\Task\BuildTasks;
 use N98\Deployer\Task\CleanupTasks;
 use N98\Deployer\Task\DeployTasks;
@@ -15,13 +15,13 @@ use N98\Deployer\Task\SystemTasks;
 
 require 'recipe/common.php';
 
-N98Magento2DeployFile::configuration();
+N98Magento2Recipe::configuration();
 
 /**
  * CONFIGURATION
  */
-\Deployer\set('webserver-user', 'www-data');
-\Deployer\set('webserver-group', 'www-data');
+\Deployer\set('webserver_user', 'www-data');
+\Deployer\set('webserver_group', 'www-data');
 
 \Deployer\set('phpfpm_service', 'php7.0-fpm');
 \Deployer\set('nginx_service', 'nginx');
@@ -36,7 +36,7 @@ if (is_file($configLocal)) {
 require_once __DIR__ . '/config/staging.php';
 require_once __DIR__ . '/config/production.php';
 
-N98Magento2DeployFile::tasks();
+N98Magento2Recipe::tasks();
 
 /**
  * DEPLOYMENT PIPELINE
@@ -48,7 +48,7 @@ task(
         'deploy:prepare',
         'deploy:release',
         BuildTasks::TASK_UPLOAD_ARTIFACTS,
-        BuildTasks::TASK_FIX_FILE_OWNERSHIP,
+        BuildTasks::TASK_CHANGE_OWNER_AND_MODE,
         'deploy:shared', // link shared dirs / files
         MagentoTasks::TASK_SYMLINKS_ENABLE,
         'deploy:symlink', // ACTIVATE RELEASE
@@ -58,7 +58,7 @@ task(
         MagentoTasks::TASK_CONFIG_DATA_IMPORT,
         MagentoTasks::TASK_CMS_DATA_IMPORT,
         MagentoTasks::TASK_CACHE_ENABLE,
-        BuildTasks::TASK_FIX_FILE_OWNERSHIP,
+        BuildTasks::TASK_CHANGE_OWNER_AND_MODE,
         'deploy:clear_paths',
         MagentoTasks::TASK_MAINTENANCE_MODE_DISABLE,
         SystemTasks::TASK_PHP_FPM_RESTART,

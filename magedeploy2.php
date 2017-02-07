@@ -6,7 +6,7 @@ return [
         'php_bin' => '/usr/local/bin/php',
         'tar_bin' => '/usr/local/bin/gtar',
         'composer_bin' => '/usr/local/bin/composer.phar',
-        'deployer_bin' => './vendor/bin/dep',
+        'deployer_bin' => '/usr/local/bin/deployer.phar'
     ],
     'deploy' => [
         'git_url' => '__SET_GIT_URL__', // @todo set git url
@@ -42,7 +42,7 @@ return [
     ],
     'magento' => [
         'db' => [
-            'admin-email' => 'admin@localhost',
+            'admin-email' => 'admin@mwltr.de',
             'admin-firstname' => 'Admin',
             'admin-lastname' => 'Admin',
             'admin-password' => 'admin123',
@@ -51,7 +51,7 @@ return [
             'base-url' => 'http://magedeploy2_dev',
             'base-url-secure' => 'https://magedeploy2_dev',
             'currency' => 'EUR',
-            'db-host' => '127.0.0.1',       // @todo set your database configuration
+            'db-host' => '127.0.0.1',
             'db-name' => 'magedeploy2_dev',
             'db-password' => '',
             'db-user' => 'root',

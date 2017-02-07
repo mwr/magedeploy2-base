@@ -18,7 +18,7 @@ $production->user('admin');
 $production->configFile($sshConfigFile);
 $production->set('deploy_path', $deployPath);
 $production->stage('production');
-$production->set('config-store-env', 'production');
+$production->set('config_store_env', 'production');
 
 // Admin Server running crons, sftp and in the future the admin-panel
 $production = server('admin01', 'admin01');
@@ -26,7 +26,7 @@ $production->user('admin');
 $production->configFile($sshConfigFile);
 $production->set('deploy_path', $deployPath);
 $production->stage('production');
-$production->set('config-store-env', 'production');
+$production->set('config_store_env', 'production');
 
 RoleManager::addServerToRoles('web01', ['web', 'production']);
 RoleManager::addServerToRoles('admin01', ['web', 'db', 'production']);
