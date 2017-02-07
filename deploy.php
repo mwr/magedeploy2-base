@@ -1,9 +1,11 @@
 <?php
 /**
- * @copyright Copyright (c) 1999-2017 netz98 GmbH (http://www.netz98.de)
+ * @copyright Copyright (c) 2017 Matthias Walter
+ * @copyright Copyright (c) 2017 netz98 GmbH (http://www.netz98.de)
  *
  * @see LICENSE
  */
+
 namespace Deployer;
 
 use N98\Deployer\Recipe\N98Magento2Recipe;
