@@ -13,42 +13,5 @@
  */
 class RoboFile extends \Mwltr\MageDeploy2\Robo\RoboFile
 {
-    public function magentoCleanVarDirs()
-    {
-        $this->startTimer();
-
-        $this->taskMagentoCleanVarDirs()->run();
-
-        $this->stopTimer();
-        $this->printRuntime(__FUNCTION__);
-    }
-
-    public function magentoUpdateDependencies()
-    {
-        $this->taskMagentoUpdateDependencies()->run();
-    }
-
-    public function magentoSetProductionMode()
-    {
-        $this->taskMagentoSetProductionMode()->run();
-    }
-
-    public function magentoSetupStaticContentDeploy()
-    {
-        $this->taskMagentoSetupStaticContentDeploy()->run();
-    }
-
-    public function magentoArtifactsCreatePackages()
-    {
-        $this->taskArtifactCreatePackages()->run();
-    }
-
-    public function testTest()
-    {
-        /** @var \Mwltr\MageDeploy\Robo\Task\UpdateSourceCodeTask $task */
-        $task = $this->task(\Mwltr\MageDeploy\Robo\Task\UpdateSourceCodeTask::class);
-        $task->tag('develop');
-        $task->run();
-    }
     
 }
