@@ -29,19 +29,33 @@ Create a new deployment setup
 composer create-project mwltr/magedeploy2-base <dir>
 ```
 
-Installing robo and deployer on a project basis instead of dev-dependencies
+Robo needs to be installed using composer, otherwise the usage of custom Tasks is not available.
+See the Robo Documentation [Including Additional Tasks](http://robo.li/extending/#including-additional-tasks)
 
-```
-composer require consolidation/robo
-composer require deployer/deployer
-```
-
-### Configuration
+### Configure Deployment
 
 After the Installation you have to edit the `magedeploy2.php` and the `deploy.php` file to suit your needs.
-The most important configurations are marked as `@todo`.
+This tool assumes you have a git repository containing the magento composer.json. 
+Furthermore your local build environment can clone said repository and download the Magento packages using composer.  
 
-**magedeploy2.php**
+To configure the MageDeploy2 use the following command:
+
+```
+./vendor/bin/robo config:init
+```
+
+It will guide you throught the most important configuration options. 
+Don't worry you can edit the magedeploy2.php lateron.
+
+Next, run 
+```
+./vendor/bin/robo validate
+```
+to validate your build environment is setup.
+
+## CONFIGURATION FILES
+
+### magedeploy2.php
 
 This is the config file to set all parameters required for the deployment in general.
 
@@ -49,11 +63,36 @@ The most common settings are to adjust on a project basis:
 
  - deploy/git_url (path to your git repository)
  - deploy/themes (the themes that are to be generated)
- - magento/db (the database settings for the build environment)
+ - build/db (the database settings for the build environment)
 
 A complete list of configuration options is provided further down.
 
-**deploy.php**
+#### env
+
+| Key          | Description                 | Default                      |                        
+| ------------ | --------------------------- | ---------------------------- |
+| git_bin      | Path to git executable      | /usr/local/bin/git           |
+| php_bin      | Path to php executable      | /usr/local/bin/php           |
+| tar_bin      | Path to tar executable      | /usr/local/bin/gtar          |
+| composer_bin | Path to composer executable | /usr/local/bin/composer.phar |
+| deployer_bin | Path to deployer executable | /usr/local/bin/deployer.phar |
+
+#### deploy
+
+| Key           | Description                                                   | Default   |                        
+| ------------- | ------------------------------------------------------------- | --------- |
+| git_url       | Git-Url to your repository                                    |           |
+| git_dir       | Sub-directory on build server to clone the repository to      | shop      |
+| app_dir       | If you have your magento composer.json in another sub-dir     |           |
+| themes        | An array of themes to compile                                 |           |
+| assets        | List of assets to generate                                    |           |
+| clean_dirs    | list of dirs to clean on each deployment                      |           |
+
+#### build/db
+
+Contains the database configuration being used to create and update a local magento setup during deployment.
+
+### deploy.php
 
 This file is for the actual deployment of your project to the server.
 It has a basic setup that should work on most of the environments.
@@ -64,32 +103,21 @@ The `deploy.php` uses the `N98\Deploy\Recipe\Magento2Recipe` as base recipe and 
 
 The server configuration is defined using the `config/*.php` files.
 
-## magedeploy2.php options
+## COMMANDS
 
-### env
+### config:init
 
-| Key          | Description                 | Default                      |                        
-| ------------ | --------------------------- | ---------------------------- |
-| git_bin      | Path to git executable      | /usr/local/bin/git           |
-| php_bin      | Path to php executable      | /usr/local/bin/php           |
-| tar_bin      | Path to tar executable      | /usr/local/bin/gtar          |
-| composer_bin | Path to composer executable | /usr/local/bin/composer.phar |
-| deployer_bin | Path to deployer executable | /usr/local/bin/deployer.phar |
+Generate a new magedeploy2.php. Be aware: this will overwrite your existing configuration
+
+### validate
+
+Validates that 
+- the bin config values are execuatble,
+- the git repository is reachable
 
 ### deploy
 
-| Key           | Description                                                   | Default   |                        
-| ------------- | ------------------------------------------------------------- | --------- |
-| git_url       | Git-Url to your repository                                    |           |
-| git_dir       | Sub-directory on build server to clone the repository to      | shop      |
-| magento_dir   | If you have your magento composer.json in another sub-dir     |           |
-| themes        | An array of themes to compile                                 |           |
-| assets        | List of assets to generate                                    |           |
-| clean_dirs    | list of dirs to clean on each deployment                      |           |
-
-### magento/db
-
-Contains the database configuration being used to create and update a local magento setup during deployment.
+Triggers the deployment with all it's stages
 
 ## Versioning
 
