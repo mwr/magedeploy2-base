@@ -13,5 +13,5 @@
  */
 class RoboFile extends \Mwltr\MageDeploy2\Robo\RoboFile
 {
-    
+
 }
