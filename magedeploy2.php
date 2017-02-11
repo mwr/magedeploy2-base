@@ -1,9 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) 2017 Matthias Walter
- *
- * @see LICENSE
- */
 
 return [
     'env' => [
@@ -11,30 +6,40 @@ return [
         'php_bin' => '/usr/local/bin/php',
         'tar_bin' => '/usr/local/bin/gtar',
         'composer_bin' => '/usr/local/bin/composer.phar',
-        'deployer_bin' => '/usr/local/bin/deployer.phar'
+        'deployer_bin' => './vendor/bin/dep',
     ],
     'deploy' => [
         'git_url' => '__SET_GIT_URL__', // @todo set git url
         'git_dir' => 'shop',
-        'magento_dir' => 'shop/src', // @todo set git repo sub-dir if necessary
-        'themes' => [  // @todo adjust to your projects needs
-            'Magento/luma' => [
-                'de_DE',
+        'app_dir' => 'shop',
+        'themes' => [
+            [
+                'code' => 'Magento/backend',
+                'languages' => [
+                    'en_US',
+                ],
             ],
-            'Magento/backend' => [
-                'de_DE',
-                'en_US',
+            [
+                'code' => 'Magento/luma',
+                'languages' => [
+                    'en_US',
+                ],
             ],
         ],
         'assets' => [
-            'var_di.tar.gz' => ['dir' => 'src/var/di'],
-            'var_generation.tar.gz' => ['dir' => 'src/var/generation'],
-            'pub_static.tar.gz' => ['dir' => 'src/pub/static'],
+            'var_di.tar.gz' => [
+                'dir' => 'src/var/di',
+            ],
+            'var_generation.tar.gz' => [
+                'dir' => 'src/var/generation',
+            ],
+            'pub_static.tar.gz' => [
+                'dir' => 'src/pub/static',
+            ],
             'shop.tar.gz' => [
                 'dir' => 'src',
                 'options' => [
                     '--exclude-vcs',
-                    // '--exclude-from=artifact.ignore',
                     '--checkpoint=5000',
                 ],
             ],
@@ -45,8 +50,12 @@ return [
             'var/generation',
         ],
     ],
-    'magento' => [
+    'build' => [
         'db' => [
+            'db-host' => '127.0.0.1',
+            'db-name' => 'magedeploy2_dev',
+            'db-password' => 'root',
+            'db-user' => 'root',
             'admin-email' => 'admin@mwltr.de',
             'admin-firstname' => 'Admin',
             'admin-lastname' => 'Admin',
@@ -56,10 +65,6 @@ return [
             'base-url' => 'http://magedeploy2_dev',
             'base-url-secure' => 'https://magedeploy2_dev',
             'currency' => 'EUR',
-            'db-host' => '127.0.0.1', // @todo set your db settings here
-            'db-name' => 'magedeploy2_dev',
-            'db-password' => '',
-            'db-user' => 'root',
             'language' => 'en_US',
             'session-save' => 'files',
             'timezone' => 'Europe/Berlin',
