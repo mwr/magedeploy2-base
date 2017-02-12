@@ -54,8 +54,8 @@ return [
         'db' => [
             'db-host' => '127.0.0.1',
             'db-name' => 'magedeploy2_dev',
-            'db-password' => 'root',
             'db-user' => 'root',
+            'db-password' => 'root',
             'admin-email' => 'admin@mwltr.de',
             'admin-firstname' => 'Admin',
             'admin-lastname' => 'Admin',
