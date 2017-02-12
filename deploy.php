@@ -50,22 +50,39 @@ task(
         'deploy:prepare',
         'deploy:release',
         BuildTasks::TASK_UPLOAD_ARTIFACTS,
-        BuildTasks::TASK_CHANGE_OWNER_AND_MODE,
+        //BuildTasks::TASK_CHANGE_OWNER_AND_MODE,
         'deploy:shared', // link shared dirs / files
         MagentoTasks::TASK_SYMLINKS_ENABLE,
         'deploy:symlink', // ACTIVATE RELEASE
         MagentoTasks::TASK_MAINTENANCE_MODE_ENABLE,
         MagentoTasks::TASK_CACHE_DISABLE,
         MagentoTasks::TASK_SETUP_UPGRADE,
-        MagentoTasks::TASK_CONFIG_DATA_IMPORT,
-        MagentoTasks::TASK_CMS_DATA_IMPORT,
+        //MagentoTasks::TASK_CONFIG_DATA_IMPORT,
+        //MagentoTasks::TASK_CMS_DATA_IMPORT,
         MagentoTasks::TASK_CACHE_ENABLE,
-        BuildTasks::TASK_CHANGE_OWNER_AND_MODE,
+        //BuildTasks::TASK_CHANGE_OWNER_AND_MODE,
         'deploy:clear_paths',
         MagentoTasks::TASK_MAINTENANCE_MODE_DISABLE,
-        SystemTasks::TASK_PHP_FPM_RESTART,
-        // SystemTasks::TASK_NGINX_RESTART,
+        //SystemTasks::TASK_PHP_FPM_RESTART,
+        //SystemTasks::TASK_NGINX_RESTART,
         CleanupTasks::TASK_CLEANUP,
+        'success',
+    ]
+);
+
+/**
+ * Initial Deployment
+ */
+desc('Server Setup');
+task(
+    'server:setup', [
+        'deploy:initialize',
+        'deploy:prepare',
+        'deploy:release',
+        BuildTasks::TASK_UPLOAD_ARTIFACTS,
+        'deploy:shared', // link shared dirs / files
+        'deploy:symlink', // ACTIVATE RELEASE
+        'deploy:clear_paths',
         'success',
     ]
 );
