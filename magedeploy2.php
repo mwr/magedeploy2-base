@@ -12,6 +12,7 @@ return [
         'git_url' => '__SET_GIT_URL__', // @todo set git url
         'git_dir' => 'shop',
         'app_dir' => 'shop',
+        'artifacts_dir' => 'artifacts',
         'themes' => [
             [
                 'code' => 'Magento/backend',
@@ -28,16 +29,16 @@ return [
         ],
         'assets' => [
             'var_di.tar.gz' => [
-                'dir' => 'src/var/di',
+                'dir' => 'var/di',
             ],
             'var_generation.tar.gz' => [
-                'dir' => 'src/var/generation',
+                'dir' => 'var/generation',
             ],
             'pub_static.tar.gz' => [
-                'dir' => 'src/pub/static',
+                'dir' => 'pub/static',
             ],
             'shop.tar.gz' => [
-                'dir' => 'src',
+                'dir' => '.',
                 'options' => [
                     '--exclude-vcs',
                     '--checkpoint=5000',
