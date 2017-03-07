@@ -27,7 +27,7 @@ return [
                 ],
             ],
         ],
-        'assets' => [
+        'artifacts' => [
             'var_di.tar.gz' => [
                 'dir' => 'var/di',
             ],
