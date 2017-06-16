@@ -9,7 +9,6 @@ namespace Deployer;
 
 use N98\Deployer\Recipe\Magento2Recipe;
 use N98\Deployer\Task\BuildTasks;
-use N98\Deployer\Task\CleanupTasks;
 use N98\Deployer\Task\DeployTasks;
 use N98\Deployer\Task\MagentoTasks;
 use N98\Deployer\Task\SystemTasks;
@@ -66,7 +65,6 @@ task(
         MagentoTasks::TASK_MAINTENANCE_MODE_DISABLE,
         //SystemTasks::TASK_PHP_FPM_RESTART,
         //SystemTasks::TASK_NGINX_RESTART,
-        CleanupTasks::TASK_CLEANUP,
         'success',
     ]
 );
