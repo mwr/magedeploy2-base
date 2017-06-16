@@ -6,18 +6,17 @@
  * @see LICENSE
  */
 
-
 namespace Deployer;
 
 use N98\Deployer\RoleManager;
 
 $deployPath = '/var/www/__ADD_DEPLOY_PATH__';
 
-$staging = server('staging', 'staging');
-$staging->user('admin');
+$staging = host('staging');
+$staging->hostname('staging');
 $staging->configFile('.ssh/config');
-$staging->set('deploy_path', $deployPath);
 $staging->stage('staging');
+$staging->set('deploy_path', $deployPath);
 $staging->set('config_store_env', 'staging');
 
 RoleManager::addServerToRoles('staging', ['web', 'db', 'staging']);
