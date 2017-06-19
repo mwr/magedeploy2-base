@@ -13,10 +13,8 @@ use N98\Deployer\RoleManager;
 $deployPath = '/var/www/__ADD_DEPLOY_PATH__';
 
 $staging = host('staging');
-$staging->hostname('staging');
 $staging->configFile('.ssh/config');
 $staging->stage('staging');
 $staging->set('deploy_path', $deployPath);
 $staging->set('config_store_env', 'staging');
-
-RoleManager::addServerToRoles('staging', ['web', 'db', 'staging']);
+$staging->roles('web', 'db', 'staging');

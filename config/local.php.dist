@@ -20,4 +20,4 @@ $local->set('webserver_user', '__SET_YOUR_LOCAL_USER__');
 $local->set('webserver_group', '__SET_YOUR_LOCAL_GROUP__');
 $local->set('bin/n98_magerun2', 'n98-magerun2.phar');
 
-RoleManager::addServerToRoles('local', ['web', 'db']);
+$local->roles('web', 'db');
