@@ -8,6 +8,13 @@ can be found here: https://github.com/deployphp/deployer/blob/master/UPGRADE.md
 
 The important parts for the standard magedeploy2 setup are as follows.
 
+### update composer.json
+
+update your composer.json to include deployer 5 and n98-deployer 2.
+
+    "deployer/deployer": "^5.0",
+    "n98/n98-deployer": "^2.0"
+
 ### update config
 
 The definitions for servers has changed in deployer 5.
