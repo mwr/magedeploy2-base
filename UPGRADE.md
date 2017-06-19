@@ -25,6 +25,16 @@ For ``local.php`` change ``localServer`` to ``local``.
 
 If you have some special setup in your config, refer to the above mentioned upgrade guide in the deployer repository
 
+Change the roles usage from RoleManager to deployer 5 roles.
+
+From: 
+
+`RoleManager::addServerToRoles('production', ['web', 'db', 'production']);`
+
+To: 
+
+`$host->roles('web', 'db', 'production');`
+
 ### update deploy.php
 
 Change the ``onFailure`` definition to ``fail``.
