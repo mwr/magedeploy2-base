@@ -39,6 +39,8 @@ To:
 
 Change the ``onFailure`` definition to ``fail``.
 
+Update deploy pipeline and remove ``CleanupTasks`` from the list.
+
 ### task restrictions
 
 in case you have some special task restrictions, you now have to use one of these methods:
