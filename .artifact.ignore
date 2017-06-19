@@ -1,0 +1,15 @@
+build
+data
+doc
+specs
+app/etc/env.php
+dev
+pub/media
+var/cache
+var/log
+var/page_cache
+var/session
+var/view_preprocessed
+tools
+
+phpunit*

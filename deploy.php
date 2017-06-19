@@ -5,12 +5,10 @@
  *
  * @see LICENSE
  */
-
 namespace Deployer;
 
 use N98\Deployer\Recipe\Magento2Recipe;
 use N98\Deployer\Task\BuildTasks;
-use N98\Deployer\Task\CleanupTasks;
 use N98\Deployer\Task\DeployTasks;
 use N98\Deployer\Task\MagentoTasks;
 use N98\Deployer\Task\SystemTasks;
@@ -27,6 +25,8 @@ Magento2Recipe::configuration();
 
 \Deployer\set('phpfpm_service', 'php7.0-fpm');
 \Deployer\set('nginx_service', 'nginx');
+
+\Deployer\set('magento_build_artifacts', ['shop.tar.gz']);
 
 /**
  * SERVERS
@@ -65,7 +65,6 @@ task(
         MagentoTasks::TASK_MAINTENANCE_MODE_DISABLE,
         //SystemTasks::TASK_PHP_FPM_RESTART,
         //SystemTasks::TASK_NGINX_RESTART,
-        CleanupTasks::TASK_CLEANUP,
         'success',
     ]
 );
@@ -90,7 +89,7 @@ task(
 after('deploy:prepare', BuildTasks::TASK_SHARED_DIRS_GENERATE);
 
 // Rollback in case of failure
-onFailure('deploy', DeployTasks::TASK_ROLLBACK);
+fail('deploy', DeployTasks::TASK_ROLLBACK);
 
 // @todo we might need to think about downgrading db versions that may have been upgrade during setup_upgrade
 // after(DeployTasks::TASK_ROLLBACK, MagentoTasks::TASK_SETUP_DOWNGRADE);

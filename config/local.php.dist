@@ -6,18 +6,18 @@
  * @see LICENSE
  */
 
-
 namespace Deployer;
 
 use N98\Deployer\RoleManager;
 
-$local = localServer('local');
+$local = local('local');
 $local->user('__ADD_YOUR_LOCAL_USERNAME__');
 $local->set('deploy_path', '__ADD_DEPLOY_PATH__');
 $local->stage('dev');
 
+$local->set('config_store_env', '__SET_YOUR_CONFIG_STORE_ENV__');
 $local->set('webserver_user', '__SET_YOUR_LOCAL_USER__');
 $local->set('webserver_group', '__SET_YOUR_LOCAL_GROUP__');
 $local->set('bin/n98_magerun2', 'n98-magerun2.phar');
 
-RoleManager::addServerToRoles('local', ['web', 'db']);
+$local->roles('web', 'db');
