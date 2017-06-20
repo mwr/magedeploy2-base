@@ -8,8 +8,6 @@
 
 namespace Deployer;
 
-use N98\Deployer\RoleManager;
-
 $deployPath = '/var/www/__ADD_DEPLOY_PATH__';
 
 $staging = host('staging');

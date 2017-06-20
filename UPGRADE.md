@@ -8,6 +8,13 @@ can be found here: https://github.com/deployphp/deployer/blob/master/UPGRADE.md
 
 The important parts for the standard magedeploy2 setup are as follows.
 
+### update composer.json
+
+update your composer.json to include deployer 5 and n98-deployer 2.
+
+    "deployer/deployer": "^5.0",
+    "n98/n98-deployer": "^2.0"
+
 ### update config
 
 The definitions for servers has changed in deployer 5.
@@ -18,9 +25,21 @@ For ``local.php`` change ``localServer`` to ``local``.
 
 If you have some special setup in your config, refer to the above mentioned upgrade guide in the deployer repository
 
+Change the roles usage from RoleManager to deployer 5 roles.
+
+From: 
+
+`RoleManager::addServerToRoles('production', ['web', 'db', 'production']);`
+
+To: 
+
+`$host->roles('web', 'db', 'production');`
+
 ### update deploy.php
 
 Change the ``onFailure`` definition to ``fail``.
+
+Update deploy pipeline and remove ``CleanupTasks`` from the list.
 
 ### task restrictions
 
