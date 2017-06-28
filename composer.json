@@ -12,7 +12,7 @@
     "require": {
         "consolidation/robo": "^1.0",
         "deployer/deployer": "^5.0",
-        "mwltr/magedeploy2": "^1.0",
+        "mwltr/magedeploy2": "^2.0",
         "n98/n98-deployer": "^2.0"
     }
 }
