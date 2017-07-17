@@ -10,7 +10,7 @@ namespace Deployer;
 
 use N98\Deployer\RoleManager;
 
-$local = local('local');
+$local = localhost('local');
 $local->user('__ADD_YOUR_LOCAL_USERNAME__');
 $local->set('deploy_path', '__ADD_DEPLOY_PATH__');
 $local->stage('dev');
