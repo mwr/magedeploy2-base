@@ -65,6 +65,7 @@ task(
         MagentoTasks::TASK_MAINTENANCE_MODE_DISABLE,
         //SystemTasks::TASK_PHP_FPM_RESTART,
         //SystemTasks::TASK_NGINX_RESTART,
+        'cleanup',
         'success',
     ]
 );
