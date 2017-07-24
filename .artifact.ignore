@@ -2,14 +2,14 @@
 ./data
 ./doc
 ./specs
-src/app/etc/env.php
-src/dev
-src/pub/media
-src/var/cache
-src/var/log
-src/var/page_cache
-src/var/session
-src/var/view_preprocessed
+app/etc/env.php
+dev
+pub/media
+var/cache
+var/log
+var/page_cache
+var/session
+var/view_preprocessed
 ./tools
 
 phpunit*
