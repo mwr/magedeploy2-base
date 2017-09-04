@@ -34,7 +34,6 @@ See the Robo Documentation [Including Additional Tasks](http://robo.li/extending
 
 ### Configure Deployment
 
-After the Installation you have to edit the `magedeploy2.php` and the `deploy.php` file to suit your needs.
 This tool assumes you have a git repository containing the magento composer.json. 
 Furthermore your local build environment can clone said repository and download the Magento packages using composer.  
 
@@ -74,6 +73,7 @@ At this point we are sure that the local build setup is working and we can now c
 
 #### Deployer Configuration
 
+After the Installation and general configuration of magedeploy2, you have to edit the `deploy.php` file to suit your needs.
 To evaluate we will create a local deployment target.
 To do so create run 
 ```
