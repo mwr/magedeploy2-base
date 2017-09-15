@@ -21,6 +21,12 @@ Those Tools can be used globaly or added as a requirement to your local composer
 
 The path to those tools can be configured in the magedeploy2.php
 
+Furthermore `gtar` ( gnu-tar) is required, it can be installed via brew
+
+```
+brew install gnu-tar
+```
+
 ### Installation
 
 Create a new deployment setup
@@ -173,6 +179,49 @@ The `deploy.php` uses the `N98\Deploy\Recipe\Magento2Recipe` as base recipe and 
 
 The server configuration is defined using the `config/*.php` files.
 
+## CUSTOM PROJECT CHANGES
+
+### General
+
+Replace all __ADD_XXX__ to suit your demands.
+
+Files to customize and check:
+
+### .ssh/config
+
+This deployment uses a native ssh client with a ssh-config file per default.
+It needs to be defined in `.ssh/config` and needs to match with your server configs beneath `config`.
+
+**CAUTION**
+
+The Hostname in the `.ssh/config` has to be an IP otherwise an error during the deployment will occur. 
+
+### .ssh/known_hosts
+A list of known hosts can also be added within this directory: `.ssh/known_hosts`
+Keys can be added here, e.g.
+
+* 127.128.129.130 ssh-rsa {long_public_key}
+* 127.128.129.131 ssh-rsa {long_public_key2}
+
+### config/*
+
+Take a look at `config/production.php` and config/staging.php` and change it accordingly.
+
+### Jenkinsfile
+
+The Jenkinsfile defines the Jenkins Pipeline. It has to be adjusted to the project needs.
+
+### deploy.php
+
+`deploy.php` is the main entry point that can be used to customize.
+
+
+### Getting Started
+
+Install dependencies with `composer install`
+
+start deployment with `./dep deploy staging`
+
 ## COMMANDS
 
 ### config:init
@@ -204,7 +253,7 @@ After generating those assets it will create packages, again according to your c
 
 ### deploy:deploy
 
-This command will invoke deployer to release your project and push the perpared artifacts to the server.
+This command will invoke deployer to release your project and push the prepared artifacts to the server.
 
 ## Versioning
 
