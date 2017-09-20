@@ -2,7 +2,6 @@
 .idea
 artifacts/*
 !artifacts/.gitkeep
-composer.lock
 config/local.php
 vendor
 shop
